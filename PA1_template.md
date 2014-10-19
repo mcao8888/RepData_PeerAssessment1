@@ -123,7 +123,7 @@ sum(is.na(activity))
 [1] 2304
 
 Devise a strategy for filling in all of the missing values in the dataset:
-We'll use the mean of the intervals
+We'll use the mean of the intervals to fill in the missing values in the dataset.
 
 ```r
 activity_imputed <- activity

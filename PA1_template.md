@@ -62,10 +62,17 @@ TotalSteps <- aggregate(steps ~ date, data = activity, sum, na.rm = TRUE)
 Histogram
 
 ```r
+# Save plot to PNG file
+png("figure/plot1.png", width=480, height=480)
+
 hist(TotalSteps$steps, main = "Total steps histogram", xlab = "5-min interval", col = "yellow")
+
+# Close graphic device
+dev.off()
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+pdf 
+  2 
 
 
 
@@ -91,10 +98,17 @@ Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and 
 ```r
 ave_steps_per_interval <- aggregate(steps ~ interval, activity, mean)
 
+# Save plot to PNG file
+png("figure/plot2.png", width=480, height=480)
+
 plot(ave_steps_per_interval, type = "l", xlab="5-min interval", ylab="Average Steps per interval", main="average number of steps taken, averaged across all days")
+
+# Close graphic device
+dev.off()
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+pdf 
+  2 
 
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -156,10 +170,17 @@ median(Total_steps_imputed)
 [1] 10766.19
 
 ```r
+# Save plot to PNG file
+png("figure/plot3.png", width=480, height=480)
+
 qplot(Total_steps_imputed, xlab='Total steps', ylab='Frequency', binwidth = 2000)
+
+# Close graphic device
+dev.off()
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+pdf 
+  2 
 
 **imputing the missing data:  mean remains the same, median is increased.**
 
@@ -192,9 +213,16 @@ weekday weekend
 Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis)
 
 ```r
+# Save plot to PNG file
+png("figure/plot4.png", width=480, height=480)
+
 qplot(x=interval, y=steps,data=subset(activity, complete.cases(activity)),geom='smooth', stat='summary', fun.y=mean) + facet_grid(dayGroup~.) + facet_wrap(~dayGroup,nrow=2) + theme(strip.background = element_rect(fill="purple")) + labs(title='Ave #steps taken, averaged across all weekday or weekend days')
+
+# Close graphic device
+dev.off()
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+pdf 
+  2 
 
 
